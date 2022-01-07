@@ -1,0 +1,55 @@
+.tips-component {
+    display: inline-block;
+    position: relative;
+    padding: 24px;
+    width: 320px;
+    height: 230px;
+    border: 1px solid silver;
+    border-radius: 5px;
+    background: white;
+}
+
+.tips-component-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 20px;
+}
+
+.tips-component::before,
+.tips-component::after {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    content: '';
+}
+
+.tips-component.bottom::before {
+    bottom: -12px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 11px solid silver;
+}
+.tips-component.bottom::after {
+    bottom: -10px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 11px solid #fff;
+}
+
+.tips-component.right::before {
+    left: -20px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid silver;
+    border-top: 11px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+
+.tips-component.right::after {
+    top: 24px;
+    left: -19px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid #fff;
+    border-top: 11px solid transparent;
+    border-bottom: 10px solid transparent;
+}
