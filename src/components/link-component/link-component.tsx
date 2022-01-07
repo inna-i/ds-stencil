@@ -21,6 +21,11 @@ export class Link {
     */
     @Prop() label: string = 'Link';
 
+    /**
+    * The icon of the link
+    */
+    @Prop() icon: string;
+
 
   render() {
     return (
@@ -28,7 +33,7 @@ export class Link {
         class="link-component"
         title={this.label}    
       >
-        <slot>Link</slot>
+        {this.icon} <slot>Link</slot>
       </a>
     );
   }

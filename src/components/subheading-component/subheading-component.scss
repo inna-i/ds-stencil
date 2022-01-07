@@ -1,0 +1,26 @@
+.sub-h4 {
+  font-size: 12px;
+  line-height: 22px;
+}
+
+.sub-h3 {
+  font-size: 20px;
+  line-height: 30px;
+}
+.sub-h2 {
+  font-size: 22px;
+  line-height: 30px;
+}
+.sub-h1 {
+  font-size: 24px;
+  line-height: 30px;
+}
+
+.sub-h4.gray,
+.sub-h3.gray,
+.sub-h2.gray,
+.sub-h1.gray {
+  margin-bottom: 10px;
+  color: gray;
+  text-transform: uppercase;
+}

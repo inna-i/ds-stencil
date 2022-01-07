@@ -24,6 +24,8 @@ export namespace Components {
          */
         "label": string;
     }
+    interface HeadingComponent {
+    }
     interface LinkComponent {
         /**
           * The active status
@@ -34,17 +36,23 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * The icon of the link
+         */
+        "icon": string;
+        /**
           * The text label of the button
          */
         "label": string;
+    }
+    interface SubheadingComponent {
     }
     interface TipsComponent {
         "acceptLabel": string;
         "actions": any;
         "backLabel": string;
         "heading": string;
+        "position": string;
         "subHeading": string;
-        "tipsPosition": string;
     }
 }
 declare global {
@@ -54,11 +62,23 @@ declare global {
         prototype: HTMLButtonComponentElement;
         new (): HTMLButtonComponentElement;
     };
+    interface HTMLHeadingComponentElement extends Components.HeadingComponent, HTMLStencilElement {
+    }
+    var HTMLHeadingComponentElement: {
+        prototype: HTMLHeadingComponentElement;
+        new (): HTMLHeadingComponentElement;
+    };
     interface HTMLLinkComponentElement extends Components.LinkComponent, HTMLStencilElement {
     }
     var HTMLLinkComponentElement: {
         prototype: HTMLLinkComponentElement;
         new (): HTMLLinkComponentElement;
+    };
+    interface HTMLSubheadingComponentElement extends Components.SubheadingComponent, HTMLStencilElement {
+    }
+    var HTMLSubheadingComponentElement: {
+        prototype: HTMLSubheadingComponentElement;
+        new (): HTMLSubheadingComponentElement;
     };
     interface HTMLTipsComponentElement extends Components.TipsComponent, HTMLStencilElement {
     }
@@ -68,7 +88,9 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "button-component": HTMLButtonComponentElement;
+        "heading-component": HTMLHeadingComponentElement;
         "link-component": HTMLLinkComponentElement;
+        "subheading-component": HTMLSubheadingComponentElement;
         "tips-component": HTMLTipsComponentElement;
     }
 }
@@ -91,6 +113,8 @@ declare namespace LocalJSX {
          */
         "label"?: string;
     }
+    interface HeadingComponent {
+    }
     interface LinkComponent {
         /**
           * The active status
@@ -101,9 +125,15 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * The icon of the link
+         */
+        "icon"?: string;
+        /**
           * The text label of the button
          */
         "label"?: string;
+    }
+    interface SubheadingComponent {
     }
     interface TipsComponent {
         "acceptLabel"?: string;
@@ -111,13 +141,18 @@ declare namespace LocalJSX {
         "backLabel"?: string;
         "heading"?: string;
         "onAccept"?: (event: CustomEvent<any>) => void;
+        /**
+          * The back action to redirect
+         */
         "onBack"?: (event: CustomEvent<any>) => void;
+        "position"?: string;
         "subHeading"?: string;
-        "tipsPosition"?: string;
     }
     interface IntrinsicElements {
         "button-component": ButtonComponent;
+        "heading-component": HeadingComponent;
         "link-component": LinkComponent;
+        "subheading-component": SubheadingComponent;
         "tips-component": TipsComponent;
     }
 }
@@ -126,7 +161,9 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "button-component": LocalJSX.ButtonComponent & JSXBase.HTMLAttributes<HTMLButtonComponentElement>;
+            "heading-component": LocalJSX.HeadingComponent & JSXBase.HTMLAttributes<HTMLHeadingComponentElement>;
             "link-component": LocalJSX.LinkComponent & JSXBase.HTMLAttributes<HTMLLinkComponentElement>;
+            "subheading-component": LocalJSX.SubheadingComponent & JSXBase.HTMLAttributes<HTMLSubheadingComponentElement>;
             "tips-component": LocalJSX.TipsComponent & JSXBase.HTMLAttributes<HTMLTipsComponentElement>;
         }
     }

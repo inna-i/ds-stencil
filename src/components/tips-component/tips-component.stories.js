@@ -1,44 +1,42 @@
 import { html } from 'lit-html';
-import { action } from '@storybook/addon-actions';
 
 export default {
   title: 'Tips',
 };
 
-const Template = ({ heading, subHeading, accept, acceptLabel, back, backLabel, tipsPosition }) => {
-  return html`
-    <tips-component
+const Template = ({ heading, subHeading, accept, acceptLabel, back, backLabel, position }) => 
+  html`<tips-component
       accept="${accept}"
-      acceptLabel="${acceptLabel}"
+      accept-label="${acceptLabel}"
       back="${back}"
-      backLabel="${backLabel}"
+      back-label="${backLabel}"
       heading="${heading}"
-      subHeading="${subHeading}"
-      tipsPosition="${tipsPosition}"
+      sub-heading="${subHeading}"
+      position="${position}"
     />
   `;
-};
 
-export const Default = Template.bind({});
-Default.args = {
-  tipsPosition: 'bottom',
+
+export const TopPosition = Template.bind({});
+TopPosition.args = {
+  position: 'bottom',
   heading: 'Tutorial title heading',
   subHeading: 'Feature name',
   description: 'Social proof niche market ownership early adopters hypotheses gamification.',
-  backLabel: 'Back',
-  back: action('click'),
   acceptLabel: 'Accept',
-  accept: action('click'),
+  backLabel: 'Back',
+  accept: () => console.log('click'),
+  back: () => console.log('click'),
 };
 
 export const RightPosition = Template.bind({});
 RightPosition.args = {
-  tipsPosition: 'right',
+  position: 'right',
   heading: 'Tutorial title heading',
   subHeading: 'Feature name',
   description: 'Social proof niche market ownership early adopters hypotheses gamification.',
   backLabel: 'Back',
-  back: action('click'),
   acceptLabel: 'Accept',
-  accept: action('click'),
+  // back: () => console.log('click'),
+  // accept: () => console.log('click'),
 };
