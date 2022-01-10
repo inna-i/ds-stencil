@@ -6,6 +6,11 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface AccordionComponent {
+        "color": string;
+        "description": string;
+        "label": string;
+    }
     interface ButtonComponent {
         /**
           * The active status
@@ -19,6 +24,10 @@ export namespace Components {
           * The disabled status
          */
         "disabled": boolean;
+        /**
+          * The icon
+         */
+        "icon": string;
         /**
           * The text label of the button
          */
@@ -36,6 +45,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * href attribute of the link
+         */
+        "href": string;
+        /**
           * The icon of the link
          */
         "icon": string;
@@ -50,12 +63,19 @@ export namespace Components {
         "acceptLabel": string;
         "actions": any;
         "backLabel": string;
+        "description": string;
         "heading": string;
         "position": string;
         "subHeading": string;
     }
 }
 declare global {
+    interface HTMLAccordionComponentElement extends Components.AccordionComponent, HTMLStencilElement {
+    }
+    var HTMLAccordionComponentElement: {
+        prototype: HTMLAccordionComponentElement;
+        new (): HTMLAccordionComponentElement;
+    };
     interface HTMLButtonComponentElement extends Components.ButtonComponent, HTMLStencilElement {
     }
     var HTMLButtonComponentElement: {
@@ -87,6 +107,7 @@ declare global {
         new (): HTMLTipsComponentElement;
     };
     interface HTMLElementTagNameMap {
+        "accordion-component": HTMLAccordionComponentElement;
         "button-component": HTMLButtonComponentElement;
         "heading-component": HTMLHeadingComponentElement;
         "link-component": HTMLLinkComponentElement;
@@ -95,6 +116,12 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface AccordionComponent {
+        "color"?: string;
+        "description"?: string;
+        "label"?: string;
+        "onOnToggle"?: (event: CustomEvent<any>) => void;
+    }
     interface ButtonComponent {
         /**
           * The active status
@@ -108,6 +135,10 @@ declare namespace LocalJSX {
           * The disabled status
          */
         "disabled"?: boolean;
+        /**
+          * The icon
+         */
+        "icon"?: string;
         /**
           * The text label of the button
          */
@@ -125,6 +156,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * href attribute of the link
+         */
+        "href"?: string;
+        /**
           * The icon of the link
          */
         "icon"?: string;
@@ -139,6 +174,7 @@ declare namespace LocalJSX {
         "acceptLabel"?: string;
         "actions"?: any;
         "backLabel"?: string;
+        "description"?: string;
         "heading"?: string;
         "onAccept"?: (event: CustomEvent<any>) => void;
         /**
@@ -149,6 +185,7 @@ declare namespace LocalJSX {
         "subHeading"?: string;
     }
     interface IntrinsicElements {
+        "accordion-component": AccordionComponent;
         "button-component": ButtonComponent;
         "heading-component": HeadingComponent;
         "link-component": LinkComponent;
@@ -160,6 +197,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "accordion-component": LocalJSX.AccordionComponent & JSXBase.HTMLAttributes<HTMLAccordionComponentElement>;
             "button-component": LocalJSX.ButtonComponent & JSXBase.HTMLAttributes<HTMLButtonComponentElement>;
             "heading-component": LocalJSX.HeadingComponent & JSXBase.HTMLAttributes<HTMLHeadingComponentElement>;
             "link-component": LocalJSX.LinkComponent & JSXBase.HTMLAttributes<HTMLLinkComponentElement>;

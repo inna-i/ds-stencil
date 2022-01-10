@@ -1,10 +1,11 @@
 import { html } from 'lit-html';
+import { action } from '@storybook/addon-actions';
 
 export default {
   title: 'Tips',
 };
 
-const Template = ({ heading, subHeading, accept, acceptLabel, back, backLabel, position }) => 
+const Template = ({ heading, subHeading, accept, acceptLabel, back, backLabel, description, position }) => 
   html`<tips-component
       accept="${accept}"
       accept-label="${acceptLabel}"
@@ -12,6 +13,7 @@ const Template = ({ heading, subHeading, accept, acceptLabel, back, backLabel, p
       back-label="${backLabel}"
       heading="${heading}"
       sub-heading="${subHeading}"
+      description=${description}
       position="${position}"
     />
   `;
@@ -25,7 +27,7 @@ TopPosition.args = {
   description: 'Social proof niche market ownership early adopters hypotheses gamification.',
   acceptLabel: 'Accept',
   backLabel: 'Back',
-  accept: () => console.log('click'),
+  accept: action('click'),
   back: () => console.log('click'),
 };
 
@@ -37,6 +39,6 @@ RightPosition.args = {
   description: 'Social proof niche market ownership early adopters hypotheses gamification.',
   backLabel: 'Back',
   acceptLabel: 'Accept',
-  // back: () => console.log('click'),
-  // accept: () => console.log('click'),
+  back: () => console.log('click'),
+  accept: () => console.log('click'),
 };

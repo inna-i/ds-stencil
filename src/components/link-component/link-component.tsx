@@ -9,31 +9,47 @@ export class Link {
   /**
    * The active status
   */
-   @Prop() active: boolean;
+  @Prop() active: boolean;
 
-    /**
-    * The disabled status
-    */
-    @Prop() disabled: boolean; 
-    
-    /**
-    * The text label of the button
-    */
-    @Prop() label: string = 'Link';
+  /**
+  * The disabled status
+  */
+  @Prop() disabled: boolean; 
+  
+  /**
+  * The text label of the button
+  */
+  @Prop() label: string = 'Link';
 
-    /**
-    * The icon of the link
-    */
-    @Prop() icon: string;
-
+  /**
+  * The icon of the link
+  */
+  @Prop() icon: string;
+  
+  /**
+  * href attribute of the link
+  */
+  @Prop() href: string;
 
   render() {
-    return (
+    if (this.href) {
+      return ( 
+        <a
+          class="link-component"
+          title={this.label}    
+          href={this.href}
+        >
+          {this.icon} <slot>Link</slot>
+        </a>
+      ); 
+    }
+
+    return ( 
       <a
         class="link-component"
-        title={this.label}    
+        title={this.label}
       >
-        {this.icon} <slot>Link</slot>
+        {this.icon} <slot>{this.label}</slot>
       </a>
     );
   }

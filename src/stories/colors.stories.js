@@ -1,108 +1,115 @@
 import { html } from 'lit-html';
-import { Neutral, Red } from './colorsConfig';
+import colorTokens from '../config/color-design-tokens';
 
 export default {
     title: 'Color',
 }
 
-const colorsRow = (colors, config) => {
+const colorItem = (colorKey, rgbValue) => html`
+    <div class="color-list-item">
+        <div class="color-block" style="background-color: ${rgbValue}; ${colorKey === 'white' ? 'border: 1px solid silver' : ''}">
+            ${colorKey}
+        </div>
+        <div class="descr">
+            ${rgbValue}
+        </div>
+    </div>`;
+
+const colorsList = (colors, config) => {
     const cols = [];
 
     for (const colorKey of colors) {
-        cols.push(html`
-            <div class="color-list-item">
-                <div class="color-block" style="background-color: ${config[colorKey].hex}">
-                    ${colorKey}
-                </div>
-                <div class="descr">
-                    ${config[colorKey].hex}
+        cols.push(colorItem(colorKey, config[colorKey].value));
+    }
+
+    return html`${cols}`;
+}
+
+const colorRows = (colors, config) => {
+    const rows = [];
+
+    for (const colorKey of colors) {
+        rows.push(html`
+            <div class="color-row">
+                <h6>${colorKey}</h6>
+                <div class="colors-list">
+                    ${colorsList(Object.keys(config[colorKey]), config[colorKey])}
                 </div>
             </div>`
         );
     }
 
-    return html`${cols}`;
-
+    return html`${rows}`;
 }
 
-const colorView = ({ colorConfig, colorType, colorKeys }) => {
+const colorSection = (color, config) => {
+    console.log(color, '   ', config);
+
+    const rows = config.value
+        ? colorItem(color, config.value)
+        : colorRows(Object.keys(config), config);
+
+    return html`
+        <section class="colors">
+            <h4>${color}</h4>
+            ${rows}
+        </section>
+    `;
+};
+
+const Template = ({ colors = []}) => {
+    const items = [];
+
+    for (const color of colors) {
+        items.push(html`${colorSection(color, colorTokens[color])}`);
+    }
+
     return html`
         <style>
+            .colors {
+                margin-bottom: 55px;
+                font-family: sans-serif;
+            }
             .color-row {
                 margin-bottom: 25px;
-                font-family: sans-serif;
             }
-            
             h4, h6 {
-                font-family: sans-serif;
                 text-align: left;
             }
-        
             h4 {
-                margin-bottom: 15px;
+                margin: 15px 0 10px;
+                text-transform: uppercase;
             }
-        
+            h6 {
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
             .colors-list {
                 display: flex;
                 flex-direction: row;
                 justify-content: stretch;
             }
-        
             .color-list-item {
                 color: #000;
             }
-            
+            .color-list-item:nth-child(n+7) .color-block {
+                color: white;
+            }
             .color-block {
                 padding: 30px;
+                margin-bottom: 5px;
+                max-width: 65px;
+                text-align: center;
+                border-right: 1px solid white;
             }
-        
             .descr {
                 font-size: 12px;
             }
         </style>
-        <section>
-            <h4>${colorType}</h4>
-            <div class="color-row">
-                <h6>${colorKeys[0]}</h6>
-                <div class="colors-list">
-                    ${colorsRow(Object.keys(colorConfig[colorKeys[0]]), colorConfig[colorKeys[0]])}
-                </div>
-            </div>
-            <div class="color-row">
-                <h6>${colorKeys[1]}</h6>
-                <div class="colors-list">
-                    ${colorsRow(Object.keys(colorConfig[colorKeys[1]]), colorConfig[colorKeys[1]])}
-                </div>
-            </div>
-        </section>
-    `;
-};
-
-const Template = ({ types = []}) => {
-    const items = [];
-
-    for (const type of types) {
-        items.push(html`${colorView(type)}`);
-    }
-
-    return html`
-        <section>
-            ${items}
-        </section>
-    `;
-
+        ${items}`;
 }
 
 export const Colors = Template.bind({});
 Colors.args = {
-    types: [
-        {
-        colorConfig: Neutral,
-        colorType: 'Neutral',
-        colorKeys: ['PureGray', 'ColdGray'],
-    }, {
-        colorConfig: Red,
-        colorType: 'Red',
-        colorKeys: ['MainRed', 'CrimsonRed'],
-    }]
+    colors: Object.keys(colorTokens),
 };

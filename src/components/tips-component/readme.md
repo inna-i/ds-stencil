@@ -12,6 +12,7 @@
 | `acceptLabel` | `accept-label` |             | `string` | `undefined` |
 | `actions`     | `actions`      |             | `any`    | `undefined` |
 | `backLabel`   | `back-label`   |             | `string` | `undefined` |
+| `description` | `description`  |             | `string` | `undefined` |
 | `heading`     | `heading`      |             | `string` | `undefined` |
 | `position`    | `position`     |             | `string` | `undefined` |
 | `subHeading`  | `sub-heading`  |             | `string` | `undefined` |

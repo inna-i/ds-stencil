@@ -1,6 +1,10 @@
 @import '../../global/variables.scss';
 
-@mixin btn-styles($background-color, $text-color, $hover-color, $active-color) {
+@mixin btn-styles(
+  $background-color, $text-color, 
+  $hover-color, $hover-text-color,
+  $active-color, $active-text-color, $disabled-color
+) {
   color: $text-color;
   background: $background-color;
   border: 1px solid $background-color;
@@ -8,24 +12,29 @@
   &:active,
   &:focus {
     box-shadow: 0 0 0 0.25rem $hover-color;
+    color: $hover-text-color;
   }
 
   &:hover,
   &:focus,
   &:not(:disabled):not(.disabled):hover {
-    background: $btn-hover;
-    border-color: $btn-hover;
-  }
-
-  &.disabled,
-  &:disabled {
-    background: silver;
-    cursor: default;
+    background: $hover-color;
+    border-color: $hover-color;
+    color: $hover-text-color;
   }
 
   &.active,
   &:not(:disabled):not(.disabled).active {
     background: $active-color;
+    border-color: $active-color;
+    color: $active-text-color;
+  }
+
+  &.disabled,
+  &:disabled {
+    background: $disabled-color;
+    opacity: 0.3;
+    pointer-events: none;
   }
 }
 
@@ -47,15 +56,16 @@
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+// $background-color, $text-color, $hover-color, $hover-text-color, $active-color, $active-text-color, $disabled-color
 .btn.primary {
-  @include btn-styles($btn-primary-color, #fff, $btn-secondary-color, purple)
+  @include btn-styles($grayscale-c100, $white, $red-c70, $white, $red-c80, $white, $grayscale-c100);
 }
 
 .btn.secondary {
-  @include btn-styles($btn-secondary-color, #000, $btn-secondary-color, blue)
+  @include btn-styles($grayscale-c20, $black, $red-c20, $red-c70, $red-c30, $red-c80, $grayscale-c20);
 }
 
 .btn.ghost {
-  @include btn-styles($btn-ghost-color, #000, $btn-ghost-color, blue)
+  @include btn-styles(transparent, $black, $red-c10, $red-c70, $red-c20, $red-c80, transparent);
 }
 
