@@ -28,7 +28,8 @@
     "start:stencil": "stencil build --watch",
     "build:stencil": "stencil build",
     "build-story": "npm run build && build-storybook",
-    "story": "npm run build:stencil && npm-run-all --parallel start:stencil storybook"
+    "story": "npm run build:stencil && npm-run-all --parallel start:stencil storybook",
+    "publish-story": " surge storybook-static ds-stencil.surge.sh"
   },
   "dependencies": {
     "@stencil/core": "^2.11.0"

@@ -23,7 +23,7 @@ export class TipsComponent {
       <div class={`tips-component ${this.position}`}>
           {this.subHeading && <h6>{this.subHeading}</h6>}
           <h4 class="sub-h1">{this.heading}</h4>
-          <p>{this.description}</p>
+          <div class="tips-component-content">{this.description}</div>
           <div class="tips-component-controls">
               <link-component label={this.backLabel} icon="➔" />
               <button-component label={this.acceptLabel} />
