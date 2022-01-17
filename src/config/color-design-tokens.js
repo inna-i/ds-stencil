@@ -1,6 +1,6 @@
 export default {
   red: {
-    jllred: {
+    red: {
       c10: {
         category: 'color',
         exportKey: 'color',

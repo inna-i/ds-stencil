@@ -1,4 +1,4 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Prop, h, Event, EventEmitter } from '@stencil/core';
 
 @Component({
   tag: 'button-component',
@@ -35,16 +35,19 @@ export class ButtonComponent {
   @Prop()
   icon: string;
 
-  
-  render() {
-    console.log(this.active);
-  
+  @Event() onClick: EventEmitter;
+  clickHandler(e: MouseEvent) {
+    this.onClick.emit(e);
+  }
+
+  render() {  
     return (
       <button
         type="button"
         class={`btn ${this.bstyle} ${this.active ? 'active' : ''}`}
         disabled={this.disabled}   
-        title={this.label}    
+        title={this.label}
+        onClick={(e) => this.clickHandler(e)}
       >
         {this.icon}
         <slot>Save</slot>

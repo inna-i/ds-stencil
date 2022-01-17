@@ -15,7 +15,7 @@ export class TipsComponent {
   @Prop() acceptLabel: string;
 
   /** The back action to redirect */
-  @Event() back: CustomEvent;
+  @Event() back: EventEmitter<MouseEvent>;
   @Event() accept: EventEmitter;
 
   render() {
@@ -26,7 +26,7 @@ export class TipsComponent {
           <div class="tips-component-content">{this.description}</div>
           <div class="tips-component-controls">
               <link-component label={this.backLabel} icon="➔" />
-              <button-component label={this.acceptLabel} />
+              <button-component label={this.acceptLabel} on-click={this.back}/>
           </div>
       </div>
     );

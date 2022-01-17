@@ -143,6 +143,7 @@ declare namespace LocalJSX {
           * The text label of the button
          */
         "label"?: string;
+        "onOnClick"?: (event: CustomEvent<any>) => void;
     }
     interface HeadingComponent {
     }
@@ -180,7 +181,7 @@ declare namespace LocalJSX {
         /**
           * The back action to redirect
          */
-        "onBack"?: (event: CustomEvent<any>) => void;
+        "onBack"?: (event: CustomEvent<MouseEvent>) => void;
         "position"?: string;
         "subHeading"?: string;
     }

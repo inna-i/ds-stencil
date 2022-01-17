@@ -16,6 +16,13 @@
 | `label`    | `label`    | The text label of the button | `string`                              | `'Click'`   |
 
 
+## Events
+
+| Event     | Description | Type               |
+| --------- | ----------- | ------------------ |
+| `onClick` |             | `CustomEvent<any>` |
+
+
 ## Dependencies
 
 ### Used by

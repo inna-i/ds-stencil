@@ -20,10 +20,10 @@
 
 ## Events
 
-| Event    | Description                 | Type               |
-| -------- | --------------------------- | ------------------ |
-| `accept` |                             | `CustomEvent<any>` |
-| `back`   | The back action to redirect | `CustomEvent<any>` |
+| Event    | Description                 | Type                      |
+| -------- | --------------------------- | ------------------------- |
+| `accept` |                             | `CustomEvent<any>`        |
+| `back`   | The back action to redirect | `CustomEvent<MouseEvent>` |
 
 
 ## Dependencies

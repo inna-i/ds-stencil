@@ -4,13 +4,14 @@ export default {
     title: 'Button',
 }
 
-const buttonView = ({ bstyle, active = false, disabled, label, icon }) => html`
+const buttonView = ({ bstyle, active = false, disabled, label, icon, clickCb }) => html`
     <button-component
         bstyle="${bstyle}"
         active="${active}"
         disabled="${disabled}"
         label="${label}"
         icon="${icon}"
+        onClick="javascript:alert('btn clicked')"
     >
         ${label}
     </button-component>
@@ -116,5 +117,5 @@ export const Primary = Template.bind({});
 Primary.args = {
     bstyle: 'primary',
     disabled: false,
-    label: 'Primary'
+    label: 'Primary',
 };
